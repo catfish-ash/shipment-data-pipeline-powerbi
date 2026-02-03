@@ -1,0 +1,12 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: shipment_dw_pg
+    environment:
+      POSTGRES_USER: dw_user
+      POSTGRES_PASSWORD: dw_pass
+      POSTGRES_DB: shipment_dw
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d

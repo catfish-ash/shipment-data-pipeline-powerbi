@@ -1,0 +1,33 @@
+CREATE OR REPLACE VIEW dw.vw_fact_shipments_enriched AS
+SELECT
+  f.shipment_id,
+  d.date AS ship_date,
+  d.month,
+  d.quarter,
+  d.year,
+  op.port_code AS origin_port,
+  op.country  AS origin_country,
+  op.region   AS origin_region,
+  dp.port_code AS dest_port,
+  dp.country  AS dest_country,
+  dp.region   AS dest_region,
+  c.carrier_name,
+  c.mode,
+  cu.customer_id,
+  cu.customer_name,
+  cu.segment,
+  f.promised_delivery_date,
+  f.actual_delivery_date,
+  f.planned_days,
+  f.actual_days,
+  f.delay_days,
+  f.on_time_flag,
+  f.weight_kg,
+  f.cost_usd,
+  f.status
+FROM dw.fact_shipments f
+JOIN dw.dim_date d ON d.date_key = f.date_key
+JOIN dw.dim_port op ON op.port_key = f.origin_port_key
+JOIN dw.dim_port dp ON dp.port_key = f.dest_port_key
+JOIN dw.dim_carrier c ON c.carrier_key = f.carrier_key
+JOIN dw.dim_customer cu ON cu.customer_key = f.customer_key;

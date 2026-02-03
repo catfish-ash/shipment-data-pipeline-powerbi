@@ -1,0 +1,9 @@
+port_code,port_name,country,region
+VAN,Port of Vancouver,Canada,NA
+SEA,Port of Seattle,USA,NA
+LAX,Port of Los Angeles,USA,NA
+RTM,Port of Rotterdam,Netherlands,EU
+HAM,Port of Hamburg,Germany,EU
+MUM,Mumbai Port,India,APAC
+SIN,Port of Singapore,Singapore,APAC
+DXB,Jebel Ali Port,UAE,ME
